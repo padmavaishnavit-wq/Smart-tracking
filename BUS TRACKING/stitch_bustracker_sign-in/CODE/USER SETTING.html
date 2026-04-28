@@ -1,0 +1,471 @@
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800"
+    />
+
+    <title>BUS TRACKING</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body>
+    <script>
+      (function(){
+        try { if (localStorage.getItem('bt_auth') !== '1') { location.href = 'SIGNIN.html'; } } catch (e) {}
+      })();
+    </script>
+    <div
+      class="relative flex h-auto min-h-screen w-full flex-col bg-slate-50 group/design-root overflow-x-hidden"
+      style='font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'
+    >
+      <div class="layout-container flex h-full grow flex-col">
+        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7edf4] px-10 py-3">
+          <div class="flex items-center gap-4 text-[#0d141c]">
+            <div class="size-4">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </div>
+            <h2 class="text-[#0d141c] text-lg font-bold leading-tight tracking-[-0.015em]">TransitTracker</h2>
+          </div>
+          <div class="flex flex-1 justify-end gap-8">
+            <div class="flex items-center gap-9">
+              <a class="text-[#0d141c] text-sm font-medium leading-normal" href="DASHBOARD.html">Dashboard</a>
+              <a class="text-[#0d141c] text-sm font-medium leading-normal" href="ROUTES.html">Routes</a>
+              <a class="text-[#0d141c] text-sm font-medium leading-normal" href="#" id="signout-link">Sign Out</a>
+              <a class="text-[#0d141c] text-sm font-medium leading-normal" href="USER REG.html">Register</a>
+            </div>
+            <a href="USER SETTING.html" aria-label="Open profile">
+              <div
+                class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 256 256">
+                  <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24ZM74.08,197.5a64,64,0,0,1,107.84,0,87.83,87.83,0,0,1-107.84,0ZM128,88a40,40,0,1,1-40,40A40,40,0,0,1,128,88Z"></path>
+                </svg>
+              </div>
+            </a>
+          </div>
+        </header>
+        <div class="px-6 flex flex-1 justify-center py-5">
+          <div class="layout-content-container flex flex-col w-full max-w-4xl">
+            <!-- Header -->
+            <div class="flex flex-wrap justify-between gap-3 p-4">
+              <p class="text-[#0d141c] tracking-light text-[32px] font-bold leading-tight">Settings</p>
+            </div>
+
+            <!-- Profile Section -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 mb-6">
+              <div class="px-6 py-4 border-b border-gray-200">
+                <h3 class="text-[#0d141c] text-lg font-bold leading-tight">Profile Information</h3>
+                <p class="text-[#49739c] text-sm mt-1">Manage your personal information and profile</p>
+              </div>
+              
+              <!-- Profile Picture -->
+              <div class="px-6 py-4">
+                <div class="flex items-center gap-4">
+                  <div class="relative">
+                    <div id="profile-picture" class="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" viewBox="0 0 256 256">
+                        <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24ZM74.08,197.5a64,64,0,0,1,107.84,0,87.83,87.83,0,0,1-107.84,0ZM128,88a40,40,0,1,1-40,40A40,40,0,0,1,128,88Z"></path>
+                      </svg>
+                    </div>
+                    <input type="file" id="profile-upload" accept="image/*" class="hidden" />
+                    <button onclick="document.getElementById('profile-upload').click()" class="absolute -bottom-1 -right-1 bg-blue-600 text-white rounded-full p-1 hover:bg-blue-700 transition-colors">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256">
+                        <path d="M208,56H180V48a24,24,0,0,0-24-24H100A24,24,0,0,0,76,48v8H48A16,16,0,0,0,32,72V200a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V72A16,16,0,0,0,208,56ZM92,48a8,8,0,0,1,8-8h56a8,8,0,0,1,8,8v8H92ZM208,200H48V72H208V200Z"></path>
+                      </svg>
+                    </button>
+                  </div>
+                  <div>
+                    <h4 class="text-[#0d141c] font-semibold">Profile Picture</h4>
+                    <p class="text-[#49739c] text-sm">Click the camera icon to upload a new photo</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Profile Form -->
+              <div class="px-6 pb-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-[#0d141c] text-sm font-medium mb-2">Full Name</label>
+                    <input
+                      id="profile-name"
+                      class="w-full h-12 px-4 rounded-lg border border-gray-300 bg-white text-[#0d141c] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="Enter your full name"
+                      value=""
+                    />
+                  </div>
+                  <div>
+                    <label class="block text-[#0d141c] text-sm font-medium mb-2">Email Address</label>
+                    <input
+                      id="profile-email"
+                      type="email"
+                      class="w-full h-12 px-4 rounded-lg border border-gray-300 bg-white text-[#0d141c] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="Enter your email"
+                      value=""
+                    />
+                  </div>
+                  <div>
+                    <label class="block text-[#0d141c] text-sm font-medium mb-2">Phone Number</label>
+                    <input
+                      id="profile-phone"
+                      class="w-full h-12 px-4 rounded-lg border border-gray-300 bg-white text-[#0d141c] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="Enter your phone number"
+                      value=""
+                    />
+                  </div>
+                  <div>
+                    <label class="block text-[#0d141c] text-sm font-medium mb-2">Location</label>
+                    <input
+                      id="profile-location"
+                      class="w-full h-12 px-4 rounded-lg border border-gray-300 bg-white text-[#0d141c] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="Enter your city"
+                      value="Tiruppur, Tamil Nadu"
+                    />
+                  </div>
+                </div>
+                <div class="mt-6">
+                  <button
+                    id="save-profile"
+                    class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                  >
+                    Save Profile Changes
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Preferences Section -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 mb-6">
+              <div class="px-6 py-4 border-b border-gray-200">
+                <h3 class="text-[#0d141c] text-lg font-bold leading-tight">Preferences</h3>
+                <p class="text-[#49739c] text-sm mt-1">Customize your app experience</p>
+              </div>
+              
+              <div class="px-6 py-4">
+                <div class="space-y-4">
+                  <!-- Language -->
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <h4 class="text-[#0d141c] font-medium">Language</h4>
+                      <p class="text-[#49739c] text-sm">Choose your preferred language</p>
+                    </div>
+                    <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                      <option>English</option>
+                      <option>Tamil</option>
+                      <option>Hindi</option>
+                    </select>
+                  </div>
+
+                  <!-- Theme -->
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <h4 class="text-[#0d141c] font-medium">Theme</h4>
+                      <p class="text-[#49739c] text-sm">Choose your preferred theme</p>
+                    </div>
+                    <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                      <option>Light</option>
+                      <option>Dark</option>
+                      <option>Auto</option>
+                    </select>
+                  </div>
+
+                  <!-- Default Route -->
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <h4 class="text-[#0d141c] font-medium">Default Route</h4>
+                      <p class="text-[#49739c] text-sm">Set your most used route</p>
+                    </div>
+                    <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                      <option>Route 22 - Tiruppur City Express</option>
+                      <option>Route 15 - Coimbatore Express</option>
+                      <option>Route 8 - Avinashi Road</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Notifications Section -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 mb-6">
+              <div class="px-6 py-4 border-b border-gray-200">
+                <h3 class="text-[#0d141c] text-lg font-bold leading-tight">Notifications</h3>
+                <p class="text-[#49739c] text-sm mt-1">Manage your notification preferences</p>
+              </div>
+              
+              <div class="px-6 py-4">
+                <div class="space-y-4">
+                  <!-- Bus Arrival Notifications -->
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <h4 class="text-[#0d141c] font-medium">Bus Arrival Alerts</h4>
+                      <p class="text-[#49739c] text-sm">Get notified when your bus is arriving</p>
+                    </div>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                      <input type="checkbox" class="sr-only peer" checked>
+                      <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                    </label>
+                  </div>
+
+                  <!-- Route Updates -->
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <h4 class="text-[#0d141c] font-medium">Route Updates</h4>
+                      <p class="text-[#49739c] text-sm">Get notified about route changes</p>
+                    </div>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                      <input type="checkbox" class="sr-only peer" checked>
+                      <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                    </label>
+                  </div>
+
+                  <!-- Delay Alerts -->
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <h4 class="text-[#0d141c] font-medium">Delay Alerts</h4>
+                      <p class="text-[#49739c] text-sm">Get notified about bus delays</p>
+                    </div>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                      <input type="checkbox" class="sr-only peer" checked>
+                      <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Security Section -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 mb-6">
+              <div class="px-6 py-4 border-b border-gray-200">
+                <h3 class="text-[#0d141c] text-lg font-bold leading-tight">Security</h3>
+                <p class="text-[#49739c] text-sm mt-1">Manage your account security</p>
+              </div>
+              
+              <div class="px-6 py-4">
+                <div class="space-y-4">
+                  <!-- Change Password -->
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <h4 class="text-[#0d141c] font-medium">Change Password</h4>
+                      <p class="text-[#49739c] text-sm">Update your account password</p>
+                    </div>
+                    <button class="bg-gray-100 text-[#0d141c] px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors">
+                      Change
+                    </button>
+                  </div>
+
+                  <!-- Two-Factor Authentication -->
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <h4 class="text-[#0d141c] font-medium">Two-Factor Authentication</h4>
+                      <p class="text-[#49739c] text-sm">Add an extra layer of security</p>
+                    </div>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                      <input type="checkbox" class="sr-only peer">
+                      <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                    </label>
+                  </div>
+
+                  <!-- Login Activity -->
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <h4 class="text-[#0d141c] font-medium">Login Activity</h4>
+                      <p class="text-[#49739c] text-sm">View your recent login activity</p>
+                    </div>
+                    <button class="bg-gray-100 text-[#0d141c] px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors">
+                      View
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Danger Zone -->
+            <div class="bg-red-50 rounded-xl shadow-sm border border-red-200 mb-6">
+              <div class="px-6 py-4 border-b border-red-200">
+                <h3 class="text-red-800 text-lg font-bold leading-tight">Danger Zone</h3>
+                <p class="text-red-600 text-sm mt-1">Irreversible and destructive actions</p>
+              </div>
+              
+              <div class="px-6 py-4">
+                <div class="space-y-4">
+                  <!-- Delete Account -->
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <h4 class="text-red-800 font-medium">Delete Account</h4>
+                      <p class="text-red-600 text-sm">Permanently delete your account and all data</p>
+                    </div>
+                    <button class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors">
+                      Delete Account
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        if (window.App) {
+          App.attachSignOutHandler();
+          
+          // Load profile data
+          var profile = App.getProfile() || {};
+          document.getElementById('profile-name').value = profile.name || '';
+          document.getElementById('profile-email').value = profile.email || '';
+          document.getElementById('profile-phone').value = profile.phone || '';
+          document.getElementById('profile-location').value = profile.location || 'Tiruppur, Tamil Nadu';
+
+          // Profile picture upload
+          var profileUpload = document.getElementById('profile-upload');
+          var profilePicture = document.getElementById('profile-picture');
+          
+          if (profileUpload) {
+            profileUpload.addEventListener('change', function(e) {
+              var file = e.target.files[0];
+              if (file) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                  profilePicture.style.backgroundImage = 'url(' + e.target.result + ')';
+                  profilePicture.style.backgroundSize = 'cover';
+                  profilePicture.style.backgroundPosition = 'center';
+                  profilePicture.innerHTML = ''; // Remove the SVG icon
+                };
+                reader.readAsDataURL(file);
+              }
+            });
+          }
+
+          // Save profile button
+          var saveBtn = document.getElementById('save-profile');
+          if (saveBtn) {
+            saveBtn.addEventListener('click', function (e) {
+              e.preventDefault();
+              var next = {
+                name: document.getElementById('profile-name').value || '',
+                email: document.getElementById('profile-email').value || '',
+                phone: document.getElementById('profile-phone').value || '',
+                location: document.getElementById('profile-location').value || ''
+              };
+              App.saveProfile(next);
+              
+              // Show success message
+              var originalText = saveBtn.textContent;
+              saveBtn.textContent = 'Saved!';
+              saveBtn.classList.add('bg-green-600');
+              saveBtn.classList.remove('bg-blue-600');
+              
+              setTimeout(function() {
+                saveBtn.textContent = originalText;
+                saveBtn.classList.remove('bg-green-600');
+                saveBtn.classList.add('bg-blue-600');
+              }, 2000);
+            });
+          }
+
+          // Notification toggles
+          var notificationToggles = document.querySelectorAll('input[type="checkbox"]');
+          notificationToggles.forEach(function(toggle) {
+            toggle.addEventListener('change', function() {
+              var setting = this.closest('.flex').querySelector('h4').textContent.toLowerCase().replace(/\s+/g, '_');
+              var isEnabled = this.checked;
+              
+              // Save notification preferences
+              var prefs = JSON.parse(localStorage.getItem('bt_notifications') || '{}');
+              prefs[setting] = isEnabled;
+              localStorage.setItem('bt_notifications', JSON.stringify(prefs));
+              
+              // Show feedback
+              var status = isEnabled ? 'enabled' : 'disabled';
+              console.log(setting + ' notifications ' + status);
+            });
+          });
+
+          // Load notification preferences
+          var prefs = JSON.parse(localStorage.getItem('bt_notifications') || '{}');
+          notificationToggles.forEach(function(toggle) {
+            var setting = toggle.closest('.flex').querySelector('h4').textContent.toLowerCase().replace(/\s+/g, '_');
+            if (prefs.hasOwnProperty(setting)) {
+              toggle.checked = prefs[setting];
+            }
+          });
+
+          // Security buttons
+          var changePasswordBtn = document.querySelector('button:contains("Change")');
+          var loginActivityBtn = document.querySelector('button:contains("View")');
+          var deleteAccountBtn = document.querySelector('button:contains("Delete Account")');
+
+          // Change password functionality
+          document.querySelectorAll('button').forEach(function(btn) {
+            if (btn.textContent.includes('Change') && btn.textContent.includes('Password')) {
+              btn.addEventListener('click', function() {
+                var newPassword = prompt('Enter new password:');
+                if (newPassword && newPassword.length >= 6) {
+                  alert('Password updated successfully!');
+                } else if (newPassword) {
+                  alert('Password must be at least 6 characters long.');
+                }
+              });
+            }
+          });
+
+          // Login activity functionality
+          document.querySelectorAll('button').forEach(function(btn) {
+            if (btn.textContent.includes('View') && btn.textContent.includes('Activity')) {
+              btn.addEventListener('click', function() {
+                alert('Recent login activity:\n\n• Today at 2:30 PM - Dashboard access\n• Yesterday at 9:15 AM - Mobile app login\n• 2 days ago at 6:45 PM - Web browser login');
+              });
+            }
+          });
+
+          // Delete account functionality
+          document.querySelectorAll('button').forEach(function(btn) {
+            if (btn.textContent.includes('Delete Account')) {
+              btn.addEventListener('click', function() {
+                if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+                  if (confirm('This will permanently delete all your data. Type "DELETE" to confirm.')) {
+                    var confirmation = prompt('Type "DELETE" to confirm account deletion:');
+                    if (confirmation === 'DELETE') {
+                      localStorage.removeItem('bt_auth');
+                      localStorage.removeItem('bt_profile');
+                      localStorage.removeItem('bt_notifications');
+                      alert('Account deleted. Redirecting to sign in...');
+                      window.location.href = 'SIGNIN.html';
+                    } else {
+                      alert('Account deletion cancelled.');
+                    }
+                  }
+                }
+              });
+            }
+          });
+
+          // Two-factor authentication toggle
+          var twoFactorToggle = document.querySelector('input[type="checkbox"]:not([checked])');
+          if (twoFactorToggle) {
+            twoFactorToggle.addEventListener('change', function() {
+              if (this.checked) {
+                alert('Two-factor authentication enabled! You will receive a verification code on your phone for future logins.');
+              } else {
+                alert('Two-factor authentication disabled.');
+              }
+            });
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
+
+

@@ -1,0 +1,85 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800"
+    />
+
+    <title>Stitch Design</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body>
+    <div
+      class="relative flex h-auto min-h-screen w-full flex-col bg-slate-50 group/design-root overflow-x-hidden"
+      style='font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'
+    >
+      <div class="layout-container flex h-full grow flex-col">
+        <div class="px-40 flex flex-1 justify-center py-5">
+          <div class="layout-content-container flex flex-col w-[512px] max-w-[512px] py-5 max-w-[960px] flex-1">
+            <h2 class="text-[#0d141c] tracking-light text-[28px] font-bold leading-tight px-4 text-center pb-3 pt-5">Join us</h2>
+            
+            <div class="flex flex-col gap-4 px-4 py-3">
+              <button class="flex items-center justify-center h-14 w-full rounded-lg bg-white text-[#0d141c] text-base font-bold leading-normal tracking-[0.015em] border border-[#e7edf4] shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#0d80f2] focus:ring-opacity-50">
+                <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_92x30dp.png" alt="Google logo" class="w-6 h-6 mr-3"/>
+                Sign up with Google
+              </button>
+              <button class="flex items-center justify-center h-14 w-full rounded-lg bg-black text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-[#0d80f2] focus:ring-opacity-50">
+                <img src="https://www.apple.com/v/apple-logo/images/overview-logo.png" alt="Apple logo" class="w-6 h-6 mr-3 invert"/>
+                Sign up with Apple
+              </button>
+            </div>
+
+            <div class="relative flex py-5 px-4 items-center">
+              <div class="flex-grow border-t border-[#e7edf4]"></div>
+              <span class="flex-shrink mx-4 text-[#49739c] text-sm font-medium">OR</span>
+              <div class="flex-grow border-t border-[#e7edf4]"></div>
+            </div>
+
+            <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+              <label class="flex flex-col min-w-40 flex-1">
+                <input
+                  placeholder="Full Name"
+                  class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#0d141c] focus:outline-0 focus:ring-0 border-none bg-[#f7f9fc] focus:border-none h-14 placeholder:text-[#a0b3c8] p-4 text-base font-normal leading-normal"
+                  value=""
+                />
+              </label>
+            </div>
+            <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+              <label class="flex flex-col min-w-40 flex-1">
+                <input
+                  placeholder="Email"
+                  class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#0d141c] focus:outline-0 focus:ring-0 border-none bg-[#f7f9fc] focus:border-none h-14 placeholder:text-[#a0b3c8] p-4 text-base font-normal leading-normal"
+                  value=""
+                />
+              </label>
+            </div>
+            <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+              <label class="flex flex-col min-w-40 flex-1">
+                <input
+                  type="password"
+                  placeholder="Password"
+                  class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#0d141c] focus:outline-0 focus:ring-0 border-none bg-[#f7f9fc] focus:border-none h-14 placeholder:text-[#a0b3c8] p-4 text-base font-normal leading-normal"
+                  value=""
+                />
+              </label>
+            </div>
+            <div class="flex px-4 py-3">
+              <button
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 flex-1 bg-[#0d80f2] text-slate-50 text-base font-bold leading-normal tracking-[0.015em]"
+              >
+                <span class="truncate">Sign Up</span>
+              </button>
+            </div>
+            <p class="text-[#49739c] text-sm font-normal leading-normal pb-3 pt-1 px-4 text-center underline">Already have an account? Sign in</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

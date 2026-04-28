@@ -1,0 +1,119 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800"
+    />
+
+    <title>BUS TRACKING</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body>
+    <div
+      class="relative flex min-h-screen w-full flex-col bg-neutral-50 group/design-root overflow-x-hidden"
+      style='font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'
+    >
+      <!-- Background Image -->
+      <div class="absolute inset-0 w-full h-full">
+        <img
+          class="absolute inset-0 h-full w-full object-cover object-center"
+          src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+          alt="Modern bus transportation"
+        />
+        <!-- Overlay for better text readability -->
+        <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+      </div>
+      
+      <div class="layout-container flex h-full grow flex-col relative z-10">
+        <div class="flex flex-1 items-center justify-center min-h-screen">
+          <div class="flex w-full max-w-md mx-auto">
+            <div class="flex w-full flex-col justify-center px-8 py-20 bg-white bg-opacity-95 backdrop-blur-sm rounded-2xl shadow-2xl">
+              <h2 class="text-[#141414] tracking-light text-4xl font-bold leading-tight pb-3">BusTracker</h2>
+              <p class="text-[#141414] text-lg font-normal leading-normal pb-6">Smart Bus Tracking System</p>
+              <div class="flex flex-col gap-4" id="signin-form">
+                <label class="flex flex-col">
+                  <p class="text-[#141414] text-sm font-medium leading-normal pb-2">Email</p>
+                  <input id="email"
+                    placeholder="Enter your email"
+                    class="form-input flex w-full resize-none overflow-hidden rounded-lg border-none bg-[#ededed] p-4 text-base font-normal leading-normal text-[#141414] placeholder:text-neutral-500 focus:border-none focus:outline-0 focus:ring-0"
+                    value=""
+                  />
+                </label>
+                <label class="flex flex-col">
+                  <p class="text-[#141414] text-sm font-medium leading-normal pb-2">Password</p>
+                  <input id="password" type="password"
+                    placeholder="Enter your password"
+                    class="form-input flex w-full resize-none overflow-hidden rounded-lg border-none bg-[#ededed] p-4 text-base font-normal leading-normal text-[#141414] placeholder:text-neutral-500 focus:border-none focus:outline-0 focus:ring-0"
+                    value=""
+                  />
+                </label>
+              </div>
+              <div class="py-6">
+                <button id="signin-btn"
+                  class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-black px-6 py-3 text-neutral-50 h-12 w-full text-base font-bold leading-normal tracking-[0.015em]"
+                >
+                  <span class="truncate">Sign In</span>
+                </button>
+              </div>
+               <p class="text-neutral-500 text-sm font-normal leading-normal text-center underline"><a href="#" id="forgot-password-link" class="hover:underline">Forgot your password?</a></p>
+               <p class="text-neutral-500 text-sm font-normal leading-normal pt-2 text-center underline"><a href="USER REG.html" class="hover:underline">Don't have an account? Sign up</a></p>
+              <p class="text-neutral-500 text-sm font-normal leading-normal pt-6 text-center">Demo: Use any email and password to continue</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+ <script>
+   (function () {
+     var btn = document.getElementById('signin-btn');
+     if (!btn) return;
+     btn.addEventListener('click', function (e) {
+       e.preventDefault();
+       var email = document.getElementById('email');
+       var password = document.getElementById('password');
+       var emailVal = (email && email.value || '').trim();
+       var passVal = (password && password.value || '').trim();
+
+       if (!emailVal || !passVal) {
+         alert('Please enter email and password.');
+         return;
+       }
+
+       // Save demo auth flag and continue
+       try {
+         localStorage.setItem('bt_auth', '1');
+         var profile = { name: '', email: emailVal };
+         localStorage.setItem('bt_profile', JSON.stringify(profile));
+       } catch (e) {}
+       window.location.href = 'DASHBOARD.html';
+     });
+
+     // Forgot Password functionality
+     var forgotPasswordLink = document.getElementById('forgot-password-link');
+     if (forgotPasswordLink) {
+       forgotPasswordLink.addEventListener('click', function (e) {
+         e.preventDefault();
+         var email = document.getElementById('email');
+         var emailVal = (email && email.value || '').trim();
+         
+         if (!emailVal) {
+           alert('Please enter your email address first.');
+           email.focus();
+           return;
+         }
+
+         // Simulate password reset process
+         alert('Password reset instructions have been sent to ' + emailVal + '\n\nIn a real application, this would send an email with reset instructions.');
+       });
+     }
+   })();
+ </script>
+</html>

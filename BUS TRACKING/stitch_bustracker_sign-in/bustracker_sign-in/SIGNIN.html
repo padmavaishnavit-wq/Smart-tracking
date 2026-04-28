@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800"
+    />
+
+    <title>Sign IN</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body>
+    <div
+      class="relative flex min-h-screen w-full flex-col bg-neutral-50 group/design-root overflow-x-hidden"
+      style='font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'
+    >
+      <div class="layout-container flex h-full grow flex-col">
+        <div class="flex flex-1 items-center justify-center px-40 py-10">
+          <div class="flex w-full max-w-[960px] gap-16">
+            <div class="flex w-1/2 items-center justify-center">
+              <div class="relative aspect-video w-full overflow-hidden rounded-lg">
+                <img
+                  class="absolute inset-0 h-full w-full object-cover object-center"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBh3usLapQTFdZrZXWhrNaMg9gYVnS4vfOyZI4rL3CnfaQKWuqcGqPnaeGCrjEUPhgPW3TM2gNVNmQsw-90JRcAMqCG81uDVRLsSmR0nMoTubGwZ1gvyGRxjUESFao5LQTN84qfOTryr7qkarXIdgT7V-YDSueAEb12fw5qfD33APAycdRbW6ZTw8hfGvS40NkfTigign7flAeBO1Ogpvxn9QUvmXdFiwN2Nm75u2tKtuE1oDcyoZbRoJ6FKGEZBj5YtjWHc4pe"
+                  alt="Abstract background image"
+                />
+              </div>
+            </div>
+            <div class="flex w-1/2 flex-col justify-center">
+              <h2 class="text-[#141414] tracking-light text-4xl font-bold leading-tight pb-3">BusTracker</h2>
+              <p class="text-[#141414] text-lg font-normal leading-normal pb-6">Smart Bus Tracking System</p>
+              <div class="flex flex-col gap-4">
+                <label class="flex flex-col">
+                  <p class="text-[#141414] text-sm font-medium leading-normal pb-2">Email</p>
+                  <input
+                    placeholder="Enter your email"
+                    class="form-input flex w-full resize-none overflow-hidden rounded-lg border-none bg-[#ededed] p-4 text-base font-normal leading-normal text-[#141414] placeholder:text-neutral-500 focus:border-none focus:outline-0 focus:ring-0"
+                    value=""
+                  />
+                </label>
+                <label class="flex flex-col">
+                  <p class="text-[#141414] text-sm font-medium leading-normal pb-2">Password</p>
+                  <input
+                    placeholder="Enter your password"
+                    class="form-input flex w-full resize-none overflow-hidden rounded-lg border-none bg-[#ededed] p-4 text-base font-normal leading-normal text-[#141414] placeholder:text-neutral-500 focus:border-none focus:outline-0 focus:ring-0"
+                    value=""
+                  />
+                </label>
+              </div>
+              <div class="py-6">
+                <button
+                  class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-black px-6 py-3 text-neutral-50 h-12 w-full text-base font-bold leading-normal tracking-[0.015em]"
+                >
+                  <span class="truncate">Sign In</span>
+                </button>
+              </div>
+              <p class="text-neutral-500 text-sm font-normal leading-normal text-center underline">Forgot your password?</p>
+              <p class="text-neutral-500 text-sm font-normal leading-normal pt-2 text-center underline">Don’t have an account? Sign up</p>
+              <p class="text-neutral-500 text-sm font-normal leading-normal pt-6 text-center">Demo: Use any email and password to continue</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
